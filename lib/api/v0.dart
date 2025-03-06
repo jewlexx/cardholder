@@ -1,20 +1,27 @@
 import 'dart:convert';
 
-class API {
-  Map<String, CardType> cards;
+class V0Client {
+  const V0Client();
 
-  API({required this.cards});
+  Future<String> getApiV0() async {
+    return "TODO";
+    // return apiData;
+  }
+}
+
+class API {
+  final Map<String, CardType> cards;
+
+  const API({required this.cards});
 
   factory API.fromRawJson(String str) => API.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory API.fromJson(Map<String, dynamic> json) {
-    if (json is Map<String, CardType>) {
-      return API(cards: json);
-    } else {
-      throw Exception('CardType is not a Map<String, CardType>');
-    }
+    return API(
+      cards: json.map((key, value) => MapEntry(key, CardType.fromJson(value))),
+    );
   }
 
   Map<String, dynamic> toJson() => cards;
