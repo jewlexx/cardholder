@@ -1,7 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cardholder/api/v0.dart';
-import 'package:cardholder/components/CardDisplay.dart';
 import 'package:flutter/material.dart';
+import 'package:cardholder/api/v0.dart';
+import 'package:cardholder/components/card_display.dart';
 
 void main() {
   runApp(const MyApp());

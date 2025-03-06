@@ -2,10 +2,10 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cardholder/api/v0.dart';
 import 'package:flutter/material.dart';
-import 'package:cardholder/api/card.dart' as cardTypes;
+import 'package:cardholder/api/card.dart' as card_types show Card;
 
 class CardDisplay extends StatelessWidget {
-  final cardTypes.Card card;
+  final card_types.Card card;
   final API api;
 
   const CardDisplay({super.key, required this.card, required this.api});
