@@ -72,6 +72,20 @@ class UserCard implements Card {
 
   UserCard({required this.type, required this.barcode, required this.alias});
 
+  factory UserCard.fromJson(Map<String, dynamic> json) {
+    return UserCard(
+      type: json['type'],
+      barcode: json['barcode'],
+      alias: json['alias'],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    "type": type,
+    "barcode": barcode,
+    "alias": alias,
+  };
+
   @override
   String getAlias() {
     return alias;
