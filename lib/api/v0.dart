@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cardholder/api/card.dart' show Card;
 import 'package:http/http.dart' as http;
 
 const v0ApiUrl =
@@ -62,4 +63,27 @@ class CardType {
     "displayName": displayName,
     "imageUrl": imageUrl,
   };
+}
+
+class UserCard implements Card {
+  final String type;
+  final int barcode;
+  final String alias;
+
+  UserCard({required this.type, required this.barcode, required this.alias});
+
+  @override
+  String getAlias() {
+    return alias;
+  }
+
+  @override
+  int getBarcode() {
+    return barcode;
+  }
+
+  @override
+  String getProvider() {
+    return type;
+  }
 }
