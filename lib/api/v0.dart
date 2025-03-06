@@ -1,11 +1,28 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+const v0ApiUrl =
+    "https://raw.githubusercontent.com/jewlexx/cardholder/refs/heads/trunk/api/v0.json";
 
 class V0Client {
   const V0Client();
 
-  Future<String> getApiV0() async {
-    return "TODO";
-    // return apiData;
+  Future<http.Response> getApiV0Raw() async {
+    final url = Uri.parse(v0ApiUrl);
+
+    return await http.get(url);
+  }
+
+  Future<String> getApiV0Json() async {
+    final response = await getApiV0Raw();
+
+    return response.body;
+  }
+
+  Future<API> getApiV0() async {
+    final json = await getApiV0Json();
+
+    return API.fromRawJson(json);
   }
 }
 

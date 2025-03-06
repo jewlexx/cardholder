@@ -8,9 +8,9 @@ void main() {
   test('API is parsed successfully', () async {
     final apiClient = MockV0Client();
 
-    when(() => apiClient.getApiV0()).thenAnswer((_) async => apiData);
+    when(() => apiClient.getApiV0Json()).thenAnswer((_) async => apiData);
 
-    final api = API.fromRawJson(await apiClient.getApiV0());
+    final api = API.fromRawJson(await apiClient.getApiV0Json());
 
     expect(api.cards.length, 2);
     expect(api.cards['flybuys']?.displayName, 'Flybuys');
